@@ -1,37 +1,236 @@
-## Welcome to GitHub Pages
+<!doctype html>
+<html lang="en">
 
-You can use the [editor on GitHub](https://github.com/HCharan135/Vce-resources/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-### Markdown
+  <title>Hello, world!</title>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+  <style type="text/css">
+    /* ============ desktop view ============ */
+    @media all and (min-width: 992px) {
 
-```markdown
-Syntax highlighted code block
+      .dropdown-menu li {
+        position: relative;
+      }
 
-# Header 1
-## Header 2
-### Header 3
+      .dropdown-menu .submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: -7px;
+      }
 
-- Bulleted
-- List
+      .dropdown-menu .submenu-left {
+        right: 100%;
+        left: auto;
+      }
 
-1. Numbered
-2. List
+      .dropdown-menu>li:hover {
+        background-color: #f1f1f1
+      }
 
-**Bold** and _Italic_ and `Code` text
+      .dropdown-menu>li:hover>.submenu {
+        display: block;
+      }
+    }
 
-[Link](url) and ![Image](src)
-```
+    /* ============ desktop view .end// ============ */
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+    /* ============ small devices ============ */
+    @media (max-width: 991px) {
 
-### Jekyll Themes
+      .dropdown-menu .dropdown-menu {
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+        margin-bottom: .5rem;
+      }
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/HCharan135/Vce-resources/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+    }
 
-### Support or Contact
+    /* ============ small devices .end// ============ */
+  </style>
+  <script type="text/javascript">
+    //	window.addEventListener("resize", function() {
+    //		"use strict"; window.location.reload(); 
+    //	});
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+      /////// Prevent closing from click inside dropdown
+      document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+        element.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      })
+
+
+
+      // make it as accordion for smaller screens
+      if (window.innerWidth < 992) {
+
+        // close all inner dropdowns when parent is closed
+        document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+          everydropdown.addEventListener('hidden.bs.dropdown', function () {
+            // after dropdown is hidden, then find all submenus
+            this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+              // hide every submenu as well
+              everysubmenu.style.display = 'none';
+            });
+          })
+        });
+
+        document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+          element.addEventListener('click', function (e) {
+
+            let nextEl = this.nextElementSibling;
+            if (nextEl && nextEl.classList.contains('submenu')) {
+              // prevent opening link if link needs to open dropdown
+              e.preventDefault();
+              console.log(nextEl);
+              if (nextEl.style.display == 'block') {
+                nextEl.style.display = 'none';
+              } else {
+                nextEl.style.display = 'block';
+              }
+
+            }
+          });
+        })
+      }
+      // end if innerWidth
+
+    });
+      // DOMContentLoaded  end
+  </script>
+
+</head>
+
+<body>
+  <h1>ECE Resources</h1>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://vce.ac.in/">VCE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Year 1 </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"> SEM 1 » </a>
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#"> SEM 2 » </a>
+                
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Year 2 </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"> SEM 1 » </a>
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#"> SEM 2 » </a>
+                
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Year 3 </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"> SEM 1 » </a>
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#"> SEM 2 » </a>
+                
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Year 4 </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"> SEM 1 » </a>
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#"> SEM 2 » </a>
+                
+                <ul class="submenu dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subject 1</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 2</a></li>
+                  <li><a class="dropdown-item" href="#">Subject 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+
+
+         
+          
+
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+</body>
+
+</html>
