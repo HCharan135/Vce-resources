@@ -242,7 +242,12 @@
       </div>
     </div>
   </nav>
+  <div style="position: relative;background-color: rgb(255, 255, 255); width: 600px; height: 800px;">    
 
+    <div style="position: absolute; bottom: 5px; background-color: rgb(255, 255, 255)">
+      <a href="/contact.html">Feedback form </a>
+    </div>
+</div>
 </body>
 
 </html>
