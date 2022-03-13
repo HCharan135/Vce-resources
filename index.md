@@ -242,9 +242,6 @@
       </div>
     </div>
   </nav>
-      <a href="/contact.html">Feedback Form</a>
-    </div>
-</div>
 
 </body>
 
